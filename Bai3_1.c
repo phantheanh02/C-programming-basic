@@ -60,6 +60,24 @@ void InThongTin(node *head) {
     }
     
 }
+
+// Chèn 1 phần tử vào đầu ds
+node* inser(node *h, Address x)
+{
+    node *p;
+    p->data = x;
+    p->next=h->next;
+    h=p;
+    return h;
+}
+
+// Xóa một node
+node* delete(node *h)
+{
+    if (h==NULL) printf("List empty");
+    else    h = h->next;
+    return h;
+}
 int main()
 {
     node *head=NULL;
