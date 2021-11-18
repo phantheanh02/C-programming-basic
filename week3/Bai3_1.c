@@ -38,7 +38,7 @@ node *CreateList()
             value->next = (node*)malloc(sizeof(node));
             value = value->next;
         }
-            printf("Nhap thong tin cua nguoi thu %d\n",++i);
+            printf("Nhap thong tin cua nguoi thu %d\n",i++);
             printf("Ten: ");
             scanf("%s",value->data.name);
             printf("SĐT: ");
@@ -82,6 +82,24 @@ node* delete(node *h)
     else    h = h->next;
     return h;
 }
+
+// Tìm node
+void *find(node *h, char s[] )
+{
+    if (h==NULL) printf("List empty");
+    else 
+    {
+        node *p=h->next;
+        while (p->next != NULL)
+        {
+            if (strcmp(p->data.name,s)) 
+                printf("Name: %s -- SDT: %s -- Email: %s\n",p->data.name,p->data.phone,p->data.email);
+            p=p->next;
+        }
+        
+    }
+}
+
 int main()
 {
     node *head=NULL;

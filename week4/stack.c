@@ -5,33 +5,34 @@ typedef struct node
 {
     int a;
 };
+int stack[1000];
+int top=-1;
+void push(int x)
+{
+    top++;
+    stack[top]=x;
+}
 
+void pop()
+{
+    top--;
+    printf("Phan tu duoc pop: %d\n", stack[top]);
+}
 void main()
 {
-    struct node *top =NULL;
     int n,value;
-    do 
+do 
+{
+    printf("Nhap 1 de push, 2 de pop, 3 de ket thuc:\n");
+    scanf("%d",&n);
+    if ( n == 1);
     {
-        do
-        {
-            printf("Nhap phan tu duoc them: ");
-            scanf("%d",&value);
-            top = push(top,value);
-            printf("Nhan 1 de tiep tuc: ");
-            scanf("%d",&n);
-        } while ( n == 1);
-        
-        printf("Nhap 1 to pop mot phan tu");
-        scanf("%d",&n);
-        while (n == 1)
-        {
-            top = pop(top,&value);
-            printf("Phan tu duoc pop: %d\n", value);
-            printf("Nhap 1 de tiep tuc: ");
-            scanf("%d",&n);
-        }
+        printf("Nhap phan tu duoc them: ");
+        scanf("%d",&value);
+        push(value);
+    } 
+    if (n == 2)
+        pop(top);
+}  while (n != 3);
 
-        printf("Nhap 1 de tiep tuc: ");
-        scanf("%d",&n);  
-    } while ( n == 1) ;
 }

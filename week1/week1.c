@@ -1,4 +1,5 @@
 #include<stdio.h>
+
 void Tower(int n , char a, char b, char c ){
     if(n==1){
         printf("\t%c-------%c\n",a,c);
@@ -15,4 +16,5 @@ int main(){
     printf("Nhap n: ");
     scanf("%d",&n);
     Tower(n,a,b,c);
+    system("pause");
 }
