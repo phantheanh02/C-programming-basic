@@ -59,16 +59,6 @@ int nb_nodes(treetype T)
     else return 1+nb_nodes(LeftChild(T))+ nb_nodes(RightChild(T)); 
 } 
 
-// Tạo 1 cây từ 2 cây con
-treetype createfrom2(int v, treetype l, treetype r)
-{ 
-    treetype N=(node_Type*)malloc(sizeof(node_Type));
-    N->element=v;
-    N->left=l; 
-    N->right=r;
-    return N;
-}
-
 // Thêm nút vào vị trí trái nhất
 treetype Add_Left(treetype Tree, int NewData){ 
     node_Type *NewNode = Create_Node(NewData);
@@ -102,11 +92,47 @@ treetype Add_Right(treetype Tree, int NewData)
     return (NewNode);
 }
 
-void main()
+
+// Function inorderprint
+void inorderprint(treetype tree)
 {
-    treetype root= Create_Node(5);
-    root->left=Add_Left(root,3);
-    root->right=Add_Right(root,9);
-    printf("%d",nb_nodes(root));
+    if (tree !=NULL)
+    {
+        inorderprint(tree->left);
+        printf("%4d",tree->element);
+        inorderprint(tree->right);
+    }
 }
 
+// Function postorderprint
+void postorderprint(treetype tree)
+{
+    if (tree!=NULL)
+    {
+        postorderprint(tree->left);
+        postorderprint(tree->right);
+        printf("%4d",tree->element);
+    }
+}
+
+// Function preorderprint
+void preorderprint(treetype tree)
+{
+    if (tree!=NULL)
+    {
+        printf("%4d",tree->element);
+        preorderprint(tree->left);
+        preorderprint(tree->right);
+    }
+}
+
+int main()
+{
+    treetype root;
+    root = Create_Node(5);
+    root->left=Add_Left(root,3);
+    root->right=Add_Right(root,9);
+    //postorderprint(root);
+    inorderprint(root);
+    //preorderprint(root);
+}
