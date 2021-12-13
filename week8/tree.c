@@ -102,6 +102,31 @@ treetype Add_Right(treetype Tree, int NewData)
     return (NewNode);
 }
 
+// Xóa một node khỏi cây
+void DeleteNode(int x,treetype Root)
+{ 
+    if (Root!=NULL) 
+    if (x < Root->element) DeleteNode(x, &Root->left); 
+    else if (x > Root->element)
+    DeleteNode(x, &Root->right); 
+    else if  ( Root->left==NULL && Root->right==NULL) 
+        Root=NULL; 
+    else if (Root->left == NULL)
+        Root = Root->right; 
+    else if (Root->right==NULL) 
+        Root = Root->left ;
+    else Root->element = DeleteMin(&Root->right); 
+}
+// Xóa tất cả node
+void freetree(treetype tree)
+{
+    if (tree!=NULL)
+        {
+            freetree(tree->left);
+            freetree(tree->right);
+            free((void *) tree);
+            }
+}
 void main()
 {
     treetype root= Create_Node(5);
