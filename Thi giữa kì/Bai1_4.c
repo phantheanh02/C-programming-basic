@@ -20,7 +20,11 @@ int i=0,k=0;
 // Ham pop
 void pop()
 {
-    printf("%s %s %s\n", DanhSach[0].name, DanhSach[0].phone, DanhSach[0].email);
+    int j;
+    DiaChi tmp;
+    printf("\nKhanh hang bi loai: %s %s %s\n", DanhSach[0].name, DanhSach[0].phone, DanhSach[0].email);
+    for (j=0; j<10; j++) 
+        DanhSach[j]=DanhSach[j+1];
     i--;
 }
 
